@@ -30,9 +30,8 @@ courses_collection.create_index([('chapter_id', 1)])  # Index for sorting by dat
 with open('./script/courses.json', 'r') as f:
     parsed_data = json.load(f)
 
-for i, course in parsed_data.items():
+for course in parsed_data:
     course_doc = {
-        "_id": i, # Not required but useful for testing
         "name": course['name'],
         "date":datetime.datetime.fromtimestamp(course['date']),
         "description":course['description'],

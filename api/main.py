@@ -1,10 +1,12 @@
+import os
 import uvicorn
 from fastapi import Body, FastAPI
 from pymongo import MongoClient
 from bson import ObjectId
 
 app = FastAPI()
-client = MongoClient('mongodb://localhost:27017/')
+# client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient(f'mongodb://{os.getenv("MONGO_HOST")}:27017/')
 db = client['kimo']
 courses_collection = db['courses']
 chapters_collection = db['chapters']
